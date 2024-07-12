@@ -1,5 +1,4 @@
--- Dumping structure for table sisjadwal.hari
-CREATE TABLE IF NOT EXISTS `hari` (
+CREATE TABLE `hari` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -17,7 +16,7 @@ INSERT INTO `hari` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(6, 'sabtu', '2024-07-09 04:39:13', '2024-07-09 04:39:13');
 
 -- Dumping structure for table sisjadwal.jam_slot
-CREATE TABLE IF NOT EXISTS `jam_slot` (
+CREATE TABLE `jam_slot` (
   `id` int NOT NULL AUTO_INCREMENT,
   `hari_id` int NOT NULL,
   `jam_ke` int NOT NULL,
@@ -43,7 +42,7 @@ INSERT INTO `jam_slot` (`id`, `hari_id`, `jam_ke`, `jam_mulai`, `jam_selesai`, `
 	(9, 2, 3, '09:00:00', '10:00:00', '2024-07-10 20:36:40', '2024-07-10 20:54:34');
 
 -- Dumping structure for table sisjadwal.kelas
-CREATE TABLE IF NOT EXISTS `kelas` (
+CREATE TABLE `kelas` (
   `id` int NOT NULL AUTO_INCREMENT,
   `tingkatan_id` int NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -61,7 +60,7 @@ INSERT INTO `kelas` (`id`, `tingkatan_id`, `name`, `created_at`, `updated_at`) V
 	(3, 1, 'c', '2024-07-09 04:49:15', '2024-07-09 04:49:15');
 
 -- Dumping structure for table sisjadwal.pelajaran
-CREATE TABLE IF NOT EXISTS `pelajaran` (
+CREATE TABLE `pelajaran` (
   `id_pelajaran` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `name` varchar(50) NOT NULL,
   `tahun_ajaran` year NOT NULL DEFAULT '2000',
@@ -80,7 +79,7 @@ INSERT INTO `pelajaran` (`id_pelajaran`, `name`, `tahun_ajaran`, `created_at`, `
 	('PEL04', 'Seni Budaya', '2024', '2024-07-12 21:47:20', '2024-07-12 21:47:20', '2024-07-12 21:47:35');
 
 -- Dumping structure for table sisjadwal.penjadwalan
-CREATE TABLE IF NOT EXISTS `penjadwalan` (
+CREATE TABLE `penjadwalan` (
   `id` int NOT NULL AUTO_INCREMENT,
   `guru_id` int DEFAULT NULL,
   `kelas_id` int DEFAULT NULL,
@@ -111,7 +110,7 @@ INSERT INTO `penjadwalan` (`id`, `guru_id`, `kelas_id`, `pelajaran_id`, `jam_slo
 	(11, 4, 2, 'PEL04', 9, '2024-07-12 21:51:35', '2024-07-12 21:51:35');
 
 -- Dumping structure for table sisjadwal.roles
-CREATE TABLE IF NOT EXISTS `roles` (
+CREATE TABLE `roles` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -126,7 +125,7 @@ INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(3, 'operator', '2024-07-07 13:49:26', '2024-07-07 13:49:26');
 
 -- Dumping structure for table sisjadwal.tingkatan
-CREATE TABLE IF NOT EXISTS `tingkatan` (
+CREATE TABLE `tingkatan` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
   `created_at` datetime DEFAULT NULL,
@@ -141,7 +140,7 @@ INSERT INTO `tingkatan` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(3, '3 (tiga)', '2024-07-12 21:43:31', '2024-07-12 21:43:37');
 
 -- Dumping structure for table sisjadwal.users
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `role_id` int NOT NULL DEFAULT '2',
   `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
