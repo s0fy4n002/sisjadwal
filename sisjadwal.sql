@@ -1,3 +1,38 @@
+CREATE TABLE `roles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
+	(1, 'admin', '2024-07-07 13:47:55', '2024-07-07 13:47:56'),
+	(2, 'guru', '2024-07-07 13:48:05', '2024-07-07 13:48:05'),
+	(3, 'operator', '2024-07-07 13:49:26', '2024-07-07 13:49:26');
+
+
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `role_id` int NOT NULL DEFAULT '2',
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `jenis_kelamin` tinyint NOT NULL COMMENT '1=laki2 2=perempuan',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+INSERT INTO `users` (`id`, `role_id`, `username`, `name`, `jenis_kelamin`, `password`, `created_at`, `updated_at`) VALUES
+	(1, 2, 'dadang', 'Dadang', 1, '$2y$12$sFuYn9cF.XjmPvvIOGR2NuwXCWHB19cR.I163raNWXtnt0TDBX6Q.', '2024-07-07 07:16:49', '2024-07-07 11:21:58'),
+	(2, 2, 'andi', 'andi', 1, '$2y$12$j4CSjd3trKCvzLaR6xOepOHPTs7xmlgM5J/yoUmDnhzYneFx2xD3m', '2024-07-07 07:08:39', '2024-07-07 07:08:39'),
+	(3, 2, 'test', 'test', 1, '$2y$12$JTI8Y4IfXugrNv3cS3ir6O1SJ080tQvtnAJ4xKFtNSzb2Ess3mLKG', '2024-07-07 07:16:23', '2024-07-07 07:16:23'),
+	(4, 2, 'lisna', 'Lisna', 2, '$2y$12$itRiqkDkkwKl0nZIH7NPL.gYkMCbx2ikg45gtFkTGS85x/KcvybKi', '2024-07-07 07:17:40', '2024-07-07 07:17:40'),
+	(6, 2, 'nina', 'nina', 2, '$2y$12$RvEywFitlO7oqZ4QhKIaT.lV8m1VhSOBEwMxAq6wsNTqSqOU/u2Ny', '2024-07-07 19:52:26', '2024-07-12 21:51:47');
+
+
 CREATE TABLE `hari` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -40,6 +75,21 @@ INSERT INTO `jam_slot` (`id`, `hari_id`, `jam_ke`, `jam_mulai`, `jam_selesai`, `
 	(7, 2, 1, '07:00:00', '08:10:00', '2024-07-10 20:36:09', '2024-07-10 20:37:00'),
 	(8, 2, 2, '08:00:00', '09:00:00', '2024-07-10 20:36:25', '2024-07-10 20:36:25'),
 	(9, 2, 3, '09:00:00', '10:00:00', '2024-07-10 20:36:40', '2024-07-10 20:54:34');
+
+-- Dumping structure for table sisjadwal.tingkatan
+CREATE TABLE `tingkatan` (
+  `id` int NOT NULL,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table sisjadwal.tingkatan: ~3 rows (approximately)
+INSERT INTO `tingkatan` (`id`, `name`, `created_at`, `updated_at`) VALUES
+	(1, '1 (Satu)', '2024-07-07 07:39:08', '2024-07-07 07:39:20'),
+	(2, '2 (Dua)', '2024-07-07 07:39:15', '2024-07-07 07:39:15'),
+	(3, '3 (tiga)', '2024-07-12 21:43:31', '2024-07-12 21:43:37');
 
 -- Dumping structure for table sisjadwal.kelas
 CREATE TABLE `kelas` (
@@ -108,56 +158,4 @@ INSERT INTO `penjadwalan` (`id`, `guru_id`, `kelas_id`, `pelajaran_id`, `jam_slo
 	(9, 2, 1, 'PEL02', 8, '2024-07-10 21:04:17', '2024-07-10 21:04:17'),
 	(10, 4, 2, 'PEL04', 6, '2024-07-12 21:51:08', '2024-07-12 21:51:08'),
 	(11, 4, 2, 'PEL04', 9, '2024-07-12 21:51:35', '2024-07-12 21:51:35');
-
--- Dumping structure for table sisjadwal.roles
-CREATE TABLE `roles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table sisjadwal.roles: ~2 rows (approximately)
-INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
-	(1, 'admin', '2024-07-07 13:47:55', '2024-07-07 13:47:56'),
-	(2, 'guru', '2024-07-07 13:48:05', '2024-07-07 13:48:05'),
-	(3, 'operator', '2024-07-07 13:49:26', '2024-07-07 13:49:26');
-
--- Dumping structure for table sisjadwal.tingkatan
-CREATE TABLE `tingkatan` (
-  `id` int NOT NULL,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table sisjadwal.tingkatan: ~3 rows (approximately)
-INSERT INTO `tingkatan` (`id`, `name`, `created_at`, `updated_at`) VALUES
-	(1, '1 (Satu)', '2024-07-07 07:39:08', '2024-07-07 07:39:20'),
-	(2, '2 (Dua)', '2024-07-07 07:39:15', '2024-07-07 07:39:15'),
-	(3, '3 (tiga)', '2024-07-12 21:43:31', '2024-07-12 21:43:37');
-
--- Dumping structure for table sisjadwal.users
-CREATE TABLE `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `role_id` int NOT NULL DEFAULT '2',
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `jenis_kelamin` tinyint NOT NULL COMMENT '1=laki2 2=perempuan',
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table sisjadwal.users: ~5 rows (approximately)
-INSERT INTO `users` (`id`, `role_id`, `username`, `name`, `jenis_kelamin`, `password`, `created_at`, `updated_at`) VALUES
-	(1, 2, 'dadang', 'Dadang', 1, '$2y$12$sFuYn9cF.XjmPvvIOGR2NuwXCWHB19cR.I163raNWXtnt0TDBX6Q.', '2024-07-07 07:16:49', '2024-07-07 11:21:58'),
-	(2, 2, 'andi', 'andi', 1, '$2y$12$j4CSjd3trKCvzLaR6xOepOHPTs7xmlgM5J/yoUmDnhzYneFx2xD3m', '2024-07-07 07:08:39', '2024-07-07 07:08:39'),
-	(3, 2, 'test', 'test', 1, '$2y$12$JTI8Y4IfXugrNv3cS3ir6O1SJ080tQvtnAJ4xKFtNSzb2Ess3mLKG', '2024-07-07 07:16:23', '2024-07-07 07:16:23'),
-	(4, 2, 'lisna', 'Lisna', 2, '$2y$12$itRiqkDkkwKl0nZIH7NPL.gYkMCbx2ikg45gtFkTGS85x/KcvybKi', '2024-07-07 07:17:40', '2024-07-07 07:17:40'),
-	(6, 2, 'nina', 'nina', 2, '$2y$12$RvEywFitlO7oqZ4QhKIaT.lV8m1VhSOBEwMxAq6wsNTqSqOU/u2Ny', '2024-07-07 19:52:26', '2024-07-12 21:51:47');
-
 
