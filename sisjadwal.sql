@@ -1,7 +1,3 @@
-
-CREATE DATABASE IF NOT EXISTS `sisjadwal`
-USE `sisjadwal`;
-
 -- Dumping structure for table sisjadwal.hari
 CREATE TABLE IF NOT EXISTS `hari` (
   `id` int NOT NULL AUTO_INCREMENT,
