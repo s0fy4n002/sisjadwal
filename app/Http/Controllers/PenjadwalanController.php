@@ -58,7 +58,7 @@ class PenjadwalanController extends Controller
     public function store(PenjadwalanRequest $request)
     {       
 
-        $exist = Penjadwalan::where(['jam_slot_id' => $request->jam_slot_id, 'kelas_id'=> $request->kelas_id])->first();
+        $exist = Penjadwalan::where(['jam_slot_id' => $request->jam_slot_id, 'guru_id'=> $request->guru_id])->first();
         if($exist){
             return redirect()->back()->with('error', 'Data Sudah Ada')->withInput();
         }
